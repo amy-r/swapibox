@@ -22,13 +22,35 @@ class App extends Component {
   // a callback function taking in results as a parameter and setting state 
   // with those results 
 
-  // getPeople = () => {
-  //   fetch('https://swapi.co/api/people/10/').then(results => results.json()).then(({ results }) => {this.setState(this.state.people:results)})
-  // }
+  getPeople = () => {
+    //returns a Response objects
+    fetch('https://swapi.co/api/people/?format=json')
+    //returns an object, with a key of results and a value of an array. 
+    .then(results => results.json())
+    //returns an array of objects. each with key value pairs we want to access
+    .then(objects => objects.results)
+    // gives us an array of all the names
+    .then(people => this.getPerson(people))
+    .then(people =>  this.setState({ people }))
+    .then(console.log(this.state))
+  }
 
-  // componentDidMount() {
-  //   this.getPeople()
-  // }
+
+  // takes in unresolved promises?
+  getPerson = (people) => {
+    const unreslovedPromises = people.map( (person) => {
+      return person.name
+    })
+    
+  //fetches for homeworld, homeworld pop, species
+    return Promise.all(unreslovedPromises)
+  }
+
+
+  componentDidMount() {
+    this.getPeople();
+  }
+
   render() {
     return (
       <div className="App">
