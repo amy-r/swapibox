@@ -13,7 +13,7 @@ class App extends Component {
 
     super();
     this.state = {
-      people : []
+      people: []
     }
   }
 
@@ -22,30 +22,52 @@ class App extends Component {
   // a callback function taking in results as a parameter and setting state 
   // with those results 
 
-  getPeople = () => {
-    //returns a Response objects
-    fetch('https://swapi.co/api/people/?format=json')
-    //returns an object, with a key of results and a value of an array. 
-    .then(results => results.json())
-    //returns an array of objects. each with key value pairs we want to access
-    .then(objects => objects.results)
-    // gives us an array of all the names
-    .then(people => this.getPerson(people))
-    .then(people =>  this.setState({ people }))
-    .then(console.log(this.state))
+  // getPeople = () => {
+  //   //returns a Response objects
+  //   fetch('https://swapi.co/api/people/?format=json')
+
+  //   //returns an object, with a key of results and a value of an array. 
+  //   .then(response => response.json())
+
+  //   //returns an array of objects. each with key value pairs we want to access
+  //   .then(data => data.results)
+
+  //   // gives us an array of all the names
+  //   .then(people => this.getPerson(people))
+  //   .then(people =>  this.setState({ people }))
+  //   .then(console.log(this.state))
+  // }
+  async fetchApi(url) {
+    try {
+      const fetched = await fetch(url);
+      const response = await fetched.json();
+      return response;
+    } catch (error) {
+      this.setState({ errorStatus: 'fetchApi Error'})
+    }
   }
 
+  getPeople = async() => {
+    const people = await this.fetchApi('https://swapi.co/api/people/?format=json');
+    const resolvedPromise = await this.getPerson(people);
+    this.setState({people: resolvedPromise})
+  }
 
   // takes in unresolved promises?
   getPerson = (people) => {
-    const unreslovedPromises = people.map( (person) => {
-      return person.name
+    const unreslovedPromises = people.results.map( (person) => {
+      fetch(person.homeworld).then(response => response.json)
+      return {
+        name: person.name,
+        species: this.fetchApi(person.species),
+        homeworld: person.homeworld,
+      }
     })
     
-  //fetches for homeworld, homeworld pop, species
+  //fetches for homeworld, homeworld population, species
+
     return Promise.all(unreslovedPromises)
   }
-
 
   componentDidMount() {
     this.getPeople();

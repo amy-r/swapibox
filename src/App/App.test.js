@@ -6,10 +6,12 @@ import renderer from 'react-test-renderer';
 
 describe( 'App Component', () => {
 
-  test('renders without crashing', () => {
-    const renderedComp = shallow(<App />);
+  it('exists', () => {
+  })
 
-    expect(renderedComp).toMatchSnapshot();
-  });
+  it('renders without crashing', () => {
+    const renderedComponent = shallow(<App />)
+    expect(renderedComponent).toMatchSnapshot();
+  })
 
 });
