@@ -55,12 +55,14 @@ class App extends Component {
 
   // takes in unresolved promises?
   getPerson = (people) => {
-    const unreslovedPromises = people.results.map( (person) => {
-      fetch(person.homeworld).then(response => response.json)
+    const unreslovedPromises = people.results.map( async (person) => {
+      let species = await this.fetchApi(person.species);
+      let homeworld = await this.fetchApi(person.homeworld);
       return {
         name: person.name,
-        species: this.fetchApi(person.species),
-        homeworld: person.homeworld,
+        species: species.name,
+        homeworld: homeworld.name,
+        population: homeworld.population
       }
     })
     
