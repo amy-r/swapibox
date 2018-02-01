@@ -7,36 +7,20 @@ import PeopleButton from '../PeopleButton/PeopleButton.js';
 import PlanetsButton from '../PlanetsButton/PlanetsButton.js';
 import ScrollText from '../ScrollText/ScrollText.js';
 import VehiclesButton from '../VehiclesButton/VehiclesButton.js';
+import './App.css'
 
 class App extends Component {
   constructor(){
 
     super();
     this.state = {
-      people: []
+      people: [],
+      planets: [],
+      vehicles: [],
+      favorites: [],
     }
   }
 
-  // create an api function that calls https://swapi.co/api/people/{number}
-  //.then(({ results }) => this.setState( { person: results }))
-  // a callback function taking in results as a parameter and setting state 
-  // with those results 
-
-  // getPeople = () => {
-  //   //returns a Response objects
-  //   fetch('https://swapi.co/api/people/?format=json')
-
-  //   //returns an object, with a key of results and a value of an array. 
-  //   .then(response => response.json())
-
-  //   //returns an array of objects. each with key value pairs we want to access
-  //   .then(data => data.results)
-
-  //   // gives us an array of all the names
-  //   .then(people => this.getPerson(people))
-  //   .then(people =>  this.setState({ people }))
-  //   .then(console.log(this.state))
-  // }
   async fetchApi(url) {
     try {
       const fetched = await fetch(url);
@@ -71,22 +55,75 @@ class App extends Component {
     return Promise.all(unreslovedPromises)
   }
 
-  componentDidMount() {
-    this.getPeople();
+  getPlanets = async() => {
+    const planets = await this.fetchApi('https://swapi.co/api/planets/?format=json');
+    const resolvedPromise = await this.getPlanet(planets);
+    this.setState({planets: resolvedPromise})
+  }
+
+  getPlanet = (planets) => {
+    const unreslovedPromises = planets.results.map( async (planet) => {
+
+      let unresolvedResidents = await planet.residents.map( async (resident) => {
+        let residentPage = await this.fetchApi(resident)
+        let name = await residentPage.name;
+        // console.log(name)
+        return name;
+      })
+      console.log(unresolvedResidents)
+
+      let residents = await Promise.all(unresolvedResidents);
+
+      // name, terrain, population, climate, residents, favorite
+      return {
+        name: planet.name,
+        terrain: planet.terrain,
+        population: planet.population,
+        climate: planet.climate,
+        residents: residents
+      }
+    })
+
+    return Promise.all(unreslovedPromises)
+  }
+
+  getVehicles = async() => {
+    const vehicles = await this.fetchApi('https://swapi.co/api/vehicles/?format=json');
+    const resolvedPromise = await this.getVehicle(vehicles)
+    this.setState({vehicles: resolvedPromise})
+  }
+
+  getVehicle = (vehicles) => {
+    const unreslovedPromises = vehicles.results.map( (vehicle) => {
+      return {
+        name: vehicle.name,
+        model: vehicle.model,
+        class: vehicle.class,
+        passengers: vehicle.passengers,
+      }
+    })
+
+    return Promise.all(unreslovedPromises)
+  }
+  
+async componentDidMount() {
+    await this.getPeople();
+    await this.getPlanets();
+    await this.getVehicles();
   }
 
   render() {
     return (
       <div className="App">
-        <header> 
+        <header>
           <h2> SWAPI-Box </h2> 
           <FavoritesButton /> 
-          <hr />
-        </header>
-        <div className = 'button-section'>
+        </header>  
+        <div className= 'button-section'>
           <PeopleButton /> <PlanetsButton /> <VehiclesButton /> 
         </div>
-        <CardContainer />
+        <CardContainer people= {this.state.people}/>
+        <ScrollText className="Scroll"/>
       </div>
     );
   }

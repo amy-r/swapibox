@@ -1,10 +1,17 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Card from '../Card/Card.js';
+import './CardContainer.css'
 
-const CardContainer = () => {
+const CardContainer = ({people}) => {
+  const peopleCards = people.map( person => {
+    return (<Card {...person}/>)
+  })
+
   return (
-    <Card />
+    <div className ="CardContainer">
+    {peopleCards}
+    </div>
   )
 } 
 

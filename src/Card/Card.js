@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
+import './Card.css'
 
 
-class Card extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
+const Card = ({name, species, homeworld, population}) => {
 
-    }
-  }
-
-  render() {
     return (
-      <h3> Name </h3>
+      <div className = 'Card'>
+      <h3> {name} </h3>
+      <ul>
+        <li> species: { species } </li>
+        <li> homeworld: { homeworld } </li>
+        <li> population: { population } </li>
+      </ul>
+      </div>
     )
-  }
 }
+
 
 export default Card;

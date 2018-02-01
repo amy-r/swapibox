@@ -1,0 +1,31 @@
+.App {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(3,1fr);
+  grid-gap: 10px;
+}
+
+.Scroll {
+  flex-basis: 100%;
+}
+
+header {
+  grid-column: 1/6;
+  display: inline-flex; 
+  justify-content: space-between;
+  background-color: #000;
+}
+
+h2 {
+  color: white;
+  font-size: 36px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.button-section {
+  grid-column: 1/6;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-around;
+}
