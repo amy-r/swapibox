@@ -33,17 +33,17 @@ const fetchApi = async (url) => {
     return Promise.all(unreslovedPromises)
   }
 
-  const getPlanets = async() => {
+  export const getPlanets = async() => {
     const planets = await fetchApi('https://swapi.co/api/planets/?format=json');
     const resolvedPromise = await getPlanet(planets);
-    this.setState({planets: resolvedPromise})
+    return resolvedPromise
   }
 
   const getPlanet = (planets) => {
     const unreslovedPromises = planets.results.map( async (planet) => {
 
       let unresolvedResidents = await planet.residents.map( async (resident) => {
-        let residentPage = await this.fetchApi(resident)
+        let residentPage = await fetchApi(resident)
         let name = await residentPage.name;
         
         return name;
@@ -64,10 +64,10 @@ const fetchApi = async (url) => {
     return Promise.all(unreslovedPromises)
   }
 
-  const getVehicles = async() => {
+  export const getVehicles = async() => {
     const vehicles = await fetchApi('https://swapi.co/api/vehicles/?format=json');
-    const resolvedPromise = await getVehicle(vehicles)
-    this.setState({vehicles: resolvedPromise})
+    const resolvedPromise = await getVehicle(vehicles);
+    return resolvedPromise;
   }
 
   const getVehicle = (vehicles) => {

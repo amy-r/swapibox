@@ -8,7 +8,7 @@ import PlanetsButton from '../PlanetsButton/PlanetsButton.js';
 import ScrollText from '../ScrollText/ScrollText.js';
 import VehiclesButton from '../VehiclesButton/VehiclesButton.js';
 import './App.css';
-import {getPeople} from '../helper.js'
+import {getPeople, getPlanets, getVehicles} from '../helper.js'
 
 class App extends Component {
   constructor(){
@@ -25,15 +25,31 @@ class App extends Component {
 
 
 clickFunction = async (e) => {
-  console.log(e.target.text)
-if (e.target.className === 'PeopleButton'){
-  const people = await getPeople();
-  
-  this.setState({
-    people: people,
-    current: 'people'
-  })
-}
+  console.log(e.target.className)
+  if (e.target.className === 'PeopleButton'){
+    const people = await getPeople();
+    
+    this.setState({
+      people: people,
+      current: 'people'
+    })
+  }
+  else if (e.target.className ==='PlanetsButton'){
+    const planets = await getPlanets();
+
+    this.setState({
+      planets: planets,
+      current: 'planets'
+    })
+  }
+  else if (e.target.className ==="VehiclesButton"){
+    const vehicles = await getVehicles();
+
+    this.setState({
+      vehicles: vehicles,
+      current: 'vehicles'
+    })
+  }
 }
   
 async componentDidMount() {
@@ -50,7 +66,7 @@ async componentDidMount() {
           <FavoritesButton /> 
         </header>  
         <div className= 'button-section'>
-          <PeopleButton onClick= {this.clickFunction}/> <PlanetsButton /> <VehiclesButton /> 
+          <PeopleButton onClick= {this.clickFunction}/> <PlanetsButton onClick= {this.clickFunction}/> <VehiclesButton onClick= {this.clickFunction}/> 
         </div>
         <CardContainer display={this.state[this.state.current]}/>
         <ScrollText className="Scroll"/>

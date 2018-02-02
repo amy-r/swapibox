@@ -5,8 +5,8 @@ import './CardContainer.css'
 
 const CardContainer = ( {display} ) => {
     console.log(display)
-    const Cards = display.map( person => {
-    return (<Card {...person}/>)
+    const Cards = display.map(input  => {
+    return (<Card {...input}/>)
   })
 
   return (

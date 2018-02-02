@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const VehiclesButton = () => {
+const VehiclesButton = (props) => {
   return (
-    <button className = 'VehiclesButton'>Vehicles </button>
+    <button onClick={props.onClick} className= 'VehiclesButton'>Vehicles</button>
   )
 }
 

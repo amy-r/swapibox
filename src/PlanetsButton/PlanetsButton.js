@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const PlanetsButton = () => {
+const PlanetsButton = (props) => {
   return (
-    <button className = 'PlanetsButton'>Planets </button>
+    <button onClick= {props.onClick} className= 'PlanetsButton'>Planets</button>
   )
   
 }
