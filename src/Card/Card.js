@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import './Card.css'
 
 
-const Card = ({name, species, homeworld, population}) => {
+const Card = (props) => {
 
+let info = Object.entries(props).map( (prop) => {
+  return <li key={prop[0]}> {prop[0]}: {prop[1]} </li>
+})
     return (
-      <div className = 'Card'>
-      <h3> {name} </h3>
+      <div className='Card'>
       <ul>
-        <li> species: { species } </li>
-        <li> homeworld: { homeworld } </li>
-        <li> population: { population } </li>
+        {info}
       </ul>
       </div>
     )
@@ -18,3 +18,12 @@ const Card = ({name, species, homeworld, population}) => {
 
 
 export default Card;
+
+      // <div className = 'Card'>
+      // <h3> {props.name} </h3>
+      // <ul>
+      //   <li> species: { props.species } </li>
+      //   <li> homeworld: { props.homeworld } </li>
+      //   <li> population: { props.population } </li>
+      // </ul>
+      // </div>
