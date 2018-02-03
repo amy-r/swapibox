@@ -23,18 +23,28 @@ ShallowWrapper {
                      SWAPI-Box 
           </h2>
           <FavoritesButton />
-          <hr />
 </header>,
         <div
           className="button-section"
 >
-          <PeopleButton />
+          <PeopleButton
+                    onClick={[Function]}
+          />
            
-          <PlanetsButton />
+          <PlanetsButton
+                    onClick={[Function]}
+          />
            
-          <VehiclesButton />
+          <VehiclesButton
+                    onClick={[Function]}
+          />
 </div>,
-        <CardContainer />,
+        <CardContainer
+          display={Array []}
+/>,
+        <ScrollText
+          className="Scroll"
+/>,
       ],
       "className": "App",
     },
@@ -50,7 +60,6 @@ ShallowWrapper {
                SWAPI-Box 
 </h2>,
             <FavoritesButton />,
-            <hr />,
           ],
         },
         "ref": null,
@@ -75,15 +84,6 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {},
-            "ref": null,
-            "rendered": null,
-            "type": "hr",
-          },
         ],
         "type": "header",
       },
@@ -93,11 +93,17 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <PeopleButton />,
+            <PeopleButton
+              onClick={[Function]}
+/>,
             " ",
-            <PlanetsButton />,
+            <PlanetsButton
+              onClick={[Function]}
+/>,
             " ",
-            <VehiclesButton />,
+            <VehiclesButton
+              onClick={[Function]}
+/>,
           ],
           "className": "button-section",
         },
@@ -107,7 +113,9 @@ ShallowWrapper {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
-            "props": Object {},
+            "props": Object {
+              "onClick": [Function],
+            },
             "ref": null,
             "rendered": null,
             "type": [Function],
@@ -117,7 +125,9 @@ ShallowWrapper {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
-            "props": Object {},
+            "props": Object {
+              "onClick": [Function],
+            },
             "ref": null,
             "rendered": null,
             "type": [Function],
@@ -127,7 +137,9 @@ ShallowWrapper {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
-            "props": Object {},
+            "props": Object {
+              "onClick": [Function],
+            },
             "ref": null,
             "rendered": null,
             "type": [Function],
@@ -139,7 +151,20 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "function",
-        "props": Object {},
+        "props": Object {
+          "display": Array [],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "Scroll",
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -159,18 +184,28 @@ ShallowWrapper {
                          SWAPI-Box 
             </h2>
             <FavoritesButton />
-            <hr />
 </header>,
           <div
             className="button-section"
 >
-            <PeopleButton />
+            <PeopleButton
+                        onClick={[Function]}
+            />
              
-            <PlanetsButton />
+            <PlanetsButton
+                        onClick={[Function]}
+            />
              
-            <VehiclesButton />
+            <VehiclesButton
+                        onClick={[Function]}
+            />
 </div>,
-          <CardContainer />,
+          <CardContainer
+            display={Array []}
+/>,
+          <ScrollText
+            className="Scroll"
+/>,
         ],
         "className": "App",
       },
@@ -186,7 +221,6 @@ ShallowWrapper {
                  SWAPI-Box 
 </h2>,
               <FavoritesButton />,
-              <hr />,
             ],
           },
           "ref": null,
@@ -211,15 +245,6 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": "hr",
-            },
           ],
           "type": "header",
         },
@@ -229,11 +254,17 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <PeopleButton />,
+              <PeopleButton
+                onClick={[Function]}
+/>,
               " ",
-              <PlanetsButton />,
+              <PlanetsButton
+                onClick={[Function]}
+/>,
               " ",
-              <VehiclesButton />,
+              <VehiclesButton
+                onClick={[Function]}
+/>,
             ],
             "className": "button-section",
           },
@@ -243,7 +274,9 @@ ShallowWrapper {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
-              "props": Object {},
+              "props": Object {
+                "onClick": [Function],
+              },
               "ref": null,
               "rendered": null,
               "type": [Function],
@@ -253,7 +286,9 @@ ShallowWrapper {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
-              "props": Object {},
+              "props": Object {
+                "onClick": [Function],
+              },
               "ref": null,
               "rendered": null,
               "type": [Function],
@@ -263,7 +298,9 @@ ShallowWrapper {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
-              "props": Object {},
+              "props": Object {
+                "onClick": [Function],
+              },
               "ref": null,
               "rendered": null,
               "type": [Function],
@@ -275,7 +312,20 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
-          "props": Object {},
+          "props": Object {
+            "display": Array [],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "Scroll",
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],

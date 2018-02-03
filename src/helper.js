@@ -1,5 +1,6 @@
 
-const fetchApi = async (url) => {
+export const fetchApi = async (url) => {
+      debugger;
     try {
       const fetched = await fetch(url);
       const response = await fetched.json();
