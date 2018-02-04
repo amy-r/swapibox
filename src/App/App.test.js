@@ -11,7 +11,7 @@ describe( 'App Component', () => {
   })
 
   it('renders without crashing', () => {
-    const renderedComponent = shallow(<App />)
+    const renderedComponent = shallow(<App />, {disableLifecycleMethods: true})
     expect(renderedComponent).toMatchSnapshot();
   })
 

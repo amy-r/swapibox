@@ -18,11 +18,17 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
+        <ScrollText
+          className="Scroll"
+          scroll={Object {}}
+/>,
         <header>
           <h2>
                      SWAPI-Box 
           </h2>
-          <FavoritesButton />
+          <FavoritesButton
+                    onClick={[Function]}
+          />
 </header>,
         <div
           className="button-section"
@@ -41,9 +47,7 @@ ShallowWrapper {
 </div>,
         <CardContainer
           display={Array []}
-/>,
-        <ScrollText
-          className="Scroll"
+          favorites={[Function]}
 />,
       ],
       "className": "App",
@@ -53,13 +57,27 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "Scroll",
+          "scroll": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
             <h2>
                SWAPI-Box 
 </h2>,
-            <FavoritesButton />,
+            <FavoritesButton
+              onClick={[Function]}
+/>,
           ],
         },
         "ref": null,
@@ -79,7 +97,9 @@ ShallowWrapper {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
-            "props": Object {},
+            "props": Object {
+              "onClick": [Function],
+            },
             "ref": null,
             "rendered": null,
             "type": [Function],
@@ -153,17 +173,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "display": Array [],
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "className": "Scroll",
+          "favorites": [Function],
         },
         "ref": null,
         "rendered": null,
@@ -179,11 +189,17 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <ScrollText
+            className="Scroll"
+            scroll={Object {}}
+/>,
           <header>
             <h2>
                          SWAPI-Box 
             </h2>
-            <FavoritesButton />
+            <FavoritesButton
+                        onClick={[Function]}
+            />
 </header>,
           <div
             className="button-section"
@@ -202,9 +218,7 @@ ShallowWrapper {
 </div>,
           <CardContainer
             display={Array []}
-/>,
-          <ScrollText
-            className="Scroll"
+            favorites={[Function]}
 />,
         ],
         "className": "App",
@@ -214,13 +228,27 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "Scroll",
+            "scroll": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
               <h2>
                  SWAPI-Box 
 </h2>,
-              <FavoritesButton />,
+              <FavoritesButton
+                onClick={[Function]}
+/>,
             ],
           },
           "ref": null,
@@ -240,7 +268,9 @@ ShallowWrapper {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
-              "props": Object {},
+              "props": Object {
+                "onClick": [Function],
+              },
               "ref": null,
               "rendered": null,
               "type": [Function],
@@ -314,17 +344,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "display": Array [],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "className": "Scroll",
+            "favorites": [Function],
           },
           "ref": null,
           "rendered": null,
@@ -340,6 +360,7 @@ ShallowWrapper {
         "enableComponentDidUpdateOnSetState": true,
       },
     },
+    "disableLifecycleMethods": true,
   },
 }
 `;

@@ -40,7 +40,7 @@ export const getPeople = async () => {
   return resolvedPromise
 }
 
-const getPerson = (people) => {
+export const getPerson = (people) => {
   const unreslovedPromises = people.results.map(async (person) => {
     let species = await fetchApi(person.species);
     let homeworld = await fetchApi(person.homeworld);

@@ -56,73 +56,85 @@ describe('helper', () => {
   })
 
   describe('getPerson', () => {
-   beforeEach(() => {
       const peopleData =
-      [{
-        "name": "Luke Skywalker",
-        "homeworld": "Tatooine",
-        "species": "Human",
-        "population": "200000"
-      }, {
-        "name": "C-3PO",
-        "homeworld": "Tatooine",
-        "species": "Droid",
-        "population": "200000"
-      }, {
-        "name": "R2-D2",
-        "homeworld": "Naboo",
-        "species": "Droid",
-        "population": "4500000000"
-      }, {
-        "name": "Darth Vader",
-        "homeworld": "Tatooine",
-        "species": "Human",
-        "population": "200000"
-      }, {
-        "name": "Leia Organa",
-        "homeworld": "Alderaan",
-        "species": "Human",
-        "population": "2000000000"
-      }, {
-        "name": "Owen Lars",
-        "homeworld": "Tatooine",
-        "species": "Human",
-        "population": "200000"
-      }, {
-        "name": "Beru Whitesun lars",
-        "homeworld": "Tatooine",
-        "species": "Human",
-        "population": "200000"
-      }, {
-        "name": "R5-D4",
-        "homeworld": "Tatooine",
-        "species": "Droid",
-        "population": "200000"
-      }, {
-        "name": "Biggs Darklighter",
-        "homeworld": "Tatooine",
-        "species": "Human",
-        "population": "200000"
-      }, {
-        "name": "Obi-Wan Kenobi",
-        "homeworld": "Stewjon",
-        "species": "Human",
-        "population": "unknown"
-      }];
+      { results : [ {
+              "name": "Luke Skywalker",
+              "homeworld": "Tatooine",
+              "species": "Human",
+              "population": "200000"
+            }, {
+              "name": "C-3PO",
+              "homeworld": "Tatooine",
+              "species": "Droid",
+              "population": "200000"
+            }, {
+              "name": "R2-D2",
+              "homeworld": "Naboo",
+              "species": "Droid",
+              "population": "4500000000"
+            }, {
+              "name": "Darth Vader",
+              "homeworld": "Tatooine",
+              "species": "Human",
+              "population": "200000"
+            }, {
+              "name": "Leia Organa",
+              "homeworld": "Alderaan",
+              "species": "Human",
+              "population": "2000000000"
+            }, {
+              "name": "Owen Lars",
+              "homeworld": "Tatooine",
+              "species": "Human",
+              "population": "200000"
+            }, {
+              "name": "Beru Whitesun lars",
+              "homeworld": "Tatooine",
+              "species": "Human",
+              "population": "200000"
+            }, {
+              "name": "R5-D4",
+              "homeworld": "Tatooine",
+              "species": "Droid",
+              "population": "200000"
+            }, {
+              "name": "Biggs Darklighter",
+              "homeworld": "Tatooine",
+              "species": "Human",
+              "population": "200000"
+            }, {
+              "name": "Obi-Wan Kenobi",
+              "homeworld": "Stewjon",
+              "species": "Human",
+              "population": "unknown"
+            }]};
+   beforeAll(() => {
       
       window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve({
           status: 200,
-          json: () => Promise.resolve(mockArr)
+          json: () => Promise.resolve(peopleData)
         }))
+
     })
 
+    it('should be called with the expected parameters', async () => {
+      const getPerson = jest.fn().mockImplementation( () => {
+        return peopleData.results
+      })
 
+      getPerson(peopleData);
+      expect(getPerson).toHaveBeenCalledWith(peopleData);
+    })
 
-    it('should call fetchApi with the expected parameters', () => {
-      const url = 'https://swapi.co/api/people/?format=json';
-      getPeople();
-      expect(window.fetch).toHaveBeenCalledWith(url)
+    it('should be calling the window.fetch', () => {
+      getPerson(peopleData);
+
+      expect(window.fetch).toHaveBeenCalled();
+    })
+
+    it('should return an array of people', () => {
+      
     })
   })
 
