@@ -28,4 +28,31 @@ h2 {
   grid-row: 2;
   display: flex;
   justify-content: space-around;
+  /*background-color: #458BCA;*/
+  border: none;
+  box-shadow: none;
+  height: 60px;
+  border-radius: 3px;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.PlanetsButton, .PeopleButton, .VehiclesButton {
+  background-color: #A7A2A3;
+  border: none;
+  box-shadow: none;
+  height: 60px;
+  border-radius: 3px;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.PlanetsButton:hover, 
+.PeopleButton:hover, 
+.VehiclesButton:hover {
+  background-color: #3E363A;
+}
+
+.favorite{
+  border: 5px solid #458BCA;
 }

@@ -5,7 +5,7 @@ const PeopleButton = (props) => {
 
 
     return (
-      <button onClick= {props.onClick} className= 'PeopleButton'>People</button>
+      <button onClick= {props.onClick} className= 'PeopleButton'>PEOPLE</button>
     )
   
 }

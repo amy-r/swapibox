@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const PlanetsButton = (props) => {
   return (
-    <button onClick= {props.onClick} className= 'PlanetsButton'>Planets</button>
+    <button onClick= {props.onClick} className= 'PlanetsButton'>PLANETS</button>
   )
   
 }

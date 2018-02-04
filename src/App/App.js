@@ -85,6 +85,7 @@ async componentDidMount() {
   render() {
     return (
       <div className="App">
+        <ScrollText scroll={this.state.scroll} className="Scroll"/>
         <header>
           <h2> SWAPI-Box </h2> 
           <FavoritesButton onClick= {this.clickFunction}/> 
@@ -93,7 +94,6 @@ async componentDidMount() {
           <PeopleButton onClick= {this.clickFunction}/> <PlanetsButton onClick= {this.clickFunction}/> <VehiclesButton onClick= {this.clickFunction}/> 
         </div>
         <CardContainer favorites= {this.favoriteCard} display={this.state[this.state.current]}/>
-        <ScrollText scroll={this.state.scroll} className="Scroll"/>
       </div>
     );
   }

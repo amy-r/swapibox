@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const VehiclesButton = (props) => {
   return (
-    <button onClick={props.onClick} className= 'VehiclesButton'>Vehicles</button>
+    <button onClick={props.onClick} className= 'VehiclesButton'>VEHICLES</button>
   )
 }
 

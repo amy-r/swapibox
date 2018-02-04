@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 
 .Card {
-  background-color: #D6D5D1;
+  background-color: #DEDCE4;
   /*border: 3px solid #D53B24;*/
   border-radius: 10px;
   color: #374157;
@@ -23,4 +23,5 @@ h3 {
 ul {
   list-style: none;
   pointer-events: none;
+  padding-left: 5%;
 }

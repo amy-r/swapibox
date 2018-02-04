@@ -1,0 +1,9 @@
+.FavoritesButton {
+  background-color: #458BCA;
+  border: none;
+  box-shadow: none;
+  height: 60px;
+  border-radius: 3px;
+  color: white;
+  letter-spacing: 3px;
+}

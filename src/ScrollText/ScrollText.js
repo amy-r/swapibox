@@ -5,7 +5,6 @@ import { getFilm } from '../helper.js'
 
 const ScrollText = (props) => {
 
-console.log(props)
     return (
       <div className = "scrolling">
       <div className="fade">
@@ -22,7 +21,7 @@ console.log(props)
       </div>
       </div>
     )
-  }
+}
 
 
 export default ScrollText;
