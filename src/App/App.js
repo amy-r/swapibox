@@ -19,7 +19,8 @@ class App extends Component {
       planets: [],
       vehicles: [],
       favorites: [],
-      current: 'people'
+      current: 'people',
+      errorStatus: ''
     }
   }
 
