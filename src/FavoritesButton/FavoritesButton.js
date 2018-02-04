@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const FavoritesButton = () => {
+const FavoritesButton = (props) => {
     return (
-      <button className = 'FavoritesButton' > Show Favorites </button>
+      <button onClick = {props.onClick} className='FavoritesButton'> Show Favorites </button>
     )
 }
 

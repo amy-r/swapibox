@@ -3,10 +3,10 @@ import propTypes from 'prop-types';
 import Card from '../Card/Card.js';
 import './CardContainer.css'
 
-const CardContainer = ( {display} ) => {
-    console.log(display)
+const CardContainer = ( {display, favorites} ) => {
     const Cards = display.map(input  => {
-    return (<Card {...input}/>)
+
+    return (<Card key={input.name} {...input} handleClick={favorites}/>)
   })
 
   return (

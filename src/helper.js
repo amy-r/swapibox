@@ -15,6 +15,25 @@ export const fetchApi = async (url) => {
   }
 }
 
+export const getFilm = async () => {
+  const films = await fetchApi('https://swapi.co/api/films/?format=json');
+  const resolvedPromise = await getFilms(films);
+  const randomFilm = resolvedPromise[Math.floor(Math.random()*resolvedPromise.length)]
+  return randomFilm
+} 
+
+const getFilms = (films) => {
+  const unreslovedPromises = films.results.map(async (film) => {
+    return {
+      name: film.title,
+      episode_id: film.episode_id,
+      opening_crawl: film.opening_crawl,
+    }
+  })
+
+  return Promise.all(unreslovedPromises)
+}
+
 export const getPeople = async () => {
   const people = await fetchApi('https://swapi.co/api/people/?format=json');
   const resolvedPromise = await getPerson(people);

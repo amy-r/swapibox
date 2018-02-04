@@ -20,6 +20,7 @@ h3 {
   font-weight: 800;
 }
 
-ul{
+ul {
   list-style: none;
+  pointer-events: none;
 }
