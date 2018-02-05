@@ -13,32 +13,33 @@ export const fetchApi = async (url) => {
   } catch (error) {
     throw new Error('fetchApi error');
   }
-}
+};
 
 export const getFilm = async () => {
   const films = await fetchApi('https://swapi.co/api/films/?format=json');
   const resolvedPromise = await getFilms(films);
-  const randomFilm = resolvedPromise[Math.floor(Math.random()*resolvedPromise.length)]
-  return randomFilm
-} 
+  const random = Math.floor(Math.random()*resolvedPromise.length);
+  const randomFilm = resolvedPromise[random];
+  return randomFilm;
+}; 
 
-const getFilms = (films) => {
+export const getFilms = (films) => {
   const unreslovedPromises = films.results.map(async (film) => {
     return {
       name: film.title,
       episode_id: film.episode_id,
-      opening_crawl: film.opening_crawl,
-    }
-  })
+      opening_crawl: film.opening_crawl
+    };
+  });
 
-  return Promise.all(unreslovedPromises)
-}
+  return Promise.all(unreslovedPromises);
+};
 
 export const getPeople = async () => {
   const people = await fetchApi('https://swapi.co/api/people/?format=json');
   const resolvedPromise = await getPerson(people);
-  return resolvedPromise
-}
+  return resolvedPromise;
+};
 
 export const getPerson = (people) => {
   const unreslovedPromises = people.results.map(async (person) => {
@@ -49,27 +50,27 @@ export const getPerson = (people) => {
       species: species.name,
       homeworld: homeworld.name,
       population: homeworld.population
-    }
-  })
+    };
+  });
 
-  return Promise.all(unreslovedPromises)
-}
+  return Promise.all(unreslovedPromises);
+};
 
 export const getPlanets = async () => {
   const planets = await fetchApi('https://swapi.co/api/planets/?format=json');
   const resolvedPromise = await getPlanet(planets);
-  return resolvedPromise
-}
+  return resolvedPromise;
+};
 
-const getPlanet = (planets) => {
+export const getPlanet = (planets) => {
   const unreslovedPromises = planets.results.map(async (planet) => {
 
     let unresolvedResidents = await planet.residents.map(async (resident) => {
-      let residentPage = await fetchApi(resident)
+      let residentPage = await fetchApi(resident);
       let name = await residentPage.name;
 
       return name;
-    })
+    });
 
     let residents = await Promise.all(unresolvedResidents);
 
@@ -80,27 +81,27 @@ const getPlanet = (planets) => {
       population: planet.population,
       climate: planet.climate,
       residents: residents
-    }
-  })
+    };
+  });
 
-  return Promise.all(unreslovedPromises)
-}
+  return Promise.all(unreslovedPromises);
+};
 
 export const getVehicles = async () => {
   const vehicles = await fetchApi('https://swapi.co/api/vehicles/?format=json');
   const resolvedPromise = await getVehicle(vehicles);
   return resolvedPromise;
-}
+};
 
-const getVehicle = (vehicles) => {
+export const getVehicle = (vehicles) => {
   const unreslovedPromises = vehicles.results.map((vehicle) => {
     return {
       name: vehicle.name,
       model: vehicle.model,
       class: vehicle.class,
-      passengers: vehicle.passengers,
-    }
-  })
+      passengers: vehicle.passengers
+    };
+  });
 
-  return Promise.all(unreslovedPromises)
-}
+  return Promise.all(unreslovedPromises);
+};

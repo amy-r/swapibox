@@ -1,6 +1,7 @@
+ /* eslint-disable */ 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fetchApi, getPerson } from './helper';
+import { fetchApi, getPerson, getPlanet, getVehicle } from './helper';
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 
@@ -59,54 +60,54 @@ describe('helper', () => {
       const peopleData =
       { results : [ {
               "name": "Luke Skywalker",
-              "homeworld": "Tatooine",
-              "species": "Human",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "C-3PO",
-              "homeworld": "Tatooine",
-              "species": "Droid",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "R2-D2",
-              "homeworld": "Naboo",
-              "species": "Droid",
-              "population": "4500000000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "Darth Vader",
-              "homeworld": "Tatooine",
-              "species": "Human",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "Leia Organa",
-              "homeworld": "Alderaan",
-              "species": "Human",
-              "population": "2000000000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "Owen Lars",
-              "homeworld": "Tatooine",
-              "species": "Human",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "Beru Whitesun lars",
-              "homeworld": "Tatooine",
-              "species": "Human",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "R5-D4",
-              "homeworld": "Tatooine",
-              "species": "Droid",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "Biggs Darklighter",
-              "homeworld": "Tatooine",
-              "species": "Human",
-              "population": "200000"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }, {
               "name": "Obi-Wan Kenobi",
-              "homeworld": "Stewjon",
-              "species": "Human",
-              "population": "unknown"
+              "homeworld": undefined,
+              "species": undefined,
+              "population": undefined
             }]};
    beforeAll(() => {
       
@@ -133,15 +134,115 @@ describe('helper', () => {
       expect(window.fetch).toHaveBeenCalled();
     })
 
-    it('should return an array of people', () => {
+    it('should return an array of people', async() => {
       
+      const people = await window.fetch();
+      const data = await people.json()
+      const array = await getPerson(data);
+      expect(array).toEqual(peopleData.results);
     })
   })
 
+  describe('getPlanet', () => {
+    const planetData = {
+      results: [{
+        "name": "Alderaan",
+        "climate": "temperate",
+        "terrain": "grasslands, mountains",
+        "population": "2000000000",
+        "residents": [
+          undefined
+        ],
+      }, {
+        "name": "Yavin IV",
+        "climate": "temperate, tropical",
+        "terrain": "jungle, rainforests",
+        "population": "1000",
+        "residents": [
+          undefined
+        ],
+      }]
+    }
+   beforeAll(() => {
+      
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          status: 200,
+          json: () => Promise.resolve(planetData)
+        }))
+
+    })
+
+    it('should be called with the expected parameters', async () => {
+      const getPlanet = jest.fn().mockImplementation( () => {
+        return planetData.results
+      })
+
+      getPlanet(planetData);
+      expect(getPlanet).toHaveBeenCalledWith(planetData);
+    })
+
+    it('should be calling the window.fetch', () => {
+      getPlanet(planetData);
+
+      expect(window.fetch).toHaveBeenCalled();
+    })
+
+    it('should return an array of planet', async() => {
+      
+      const planet = await window.fetch();
+      const data = await planet.json()
+      const array = await getPlanet(data);
+      expect(array).toEqual(planetData.results);
+    })
+  })
 // is it being called (app)
 // should call fetch with expected parameters (helper methods)
 // what kind of thing does it return (data type) that where you give it mock dta 
 // and it returns cleaned data
 // does it return an error if the thing is rejected. 
 
+  describe('getVehicle', () => {
+    const vehicleData = {
+      results: [
+        {
+            "name": "Sand Crawler", 
+            "model": "Digger Crawler", 
+            "passengers": "30", 
+            "class": "wheeled", 
+        }, 
+        {
+            "name": "T-16 skyhopper", 
+            "model": "T-16 skyhopper", 
+            "passengers": "1", 
+            "class": "repulsorcraft", 
+        }]
+    }
+   beforeAll(() => {
+      
+      window.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          status: 200,
+          json: () => Promise.resolve(vehicleData)
+        }))
+
+    })
+
+    it('should be called with the expected parameters', async () => {
+      const getVehicle = jest.fn().mockImplementation( () => {
+        return vehicleData.results
+      })
+
+      getVehicle(vehicleData);
+      expect(getVehicle).toHaveBeenCalledWith(vehicleData);
+    })
+
+    it('should return an array of planet', async() => {
+      
+      const planet = await window.fetch();
+      const data = await planet.json()
+      const array = await getVehicle(data);
+      expect(array).toEqual(vehicleData.results);
+    })
+  })
 })
